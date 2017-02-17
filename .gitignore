@@ -8,3 +8,4 @@ npm-debug.log
 config/local_env.json
 tmp/
 !.keep
+app
