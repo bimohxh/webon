@@ -1,6 +1,6 @@
 {
   "name": "webon",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A command tool to develop static sites",
   "bin": {
     "webon": "./bin/webon.js"

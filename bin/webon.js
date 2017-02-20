@@ -5,6 +5,7 @@ const Helper = require('../lib/helper')
 const Init = require('../lib/init')
 const Server = require('../lib/server')
 const Oss = require('../lib/oss')
+const App = require('../lib/app')
 const colors = require('colors')
 
 
@@ -26,6 +27,13 @@ program
   .description('初始化配置参数')
   .action(() => {
     Init.config()
+  })
+
+program
+  .command('new <dir>')
+  .description('初始化配置参数')
+  .action((dir) => {
+    App.new(dir)
   })
 
 program
