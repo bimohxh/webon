@@ -1,7 +1,6 @@
 # webon
 [![npm](https://img.shields.io/npm/v/webon.svg)]()
 [![npm](https://img.shields.io/npm/dt/webon.svg)]()
-[![npm](https://img.shields.io/npm/dm/webon.svg)]()
 
 一个用于开发和部署静态网页的 node 命令行工具
 
