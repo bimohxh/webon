@@ -1,6 +1,8 @@
 # webon
 一个用于开发和部署静态网页的 node 命令行工具
 
+![](https://raw.githubusercontent.com/bimohxh/webon/master/logo.png)
+
 ## 为什么会有 webon 
 很多时候我们都会有这种需求，做一些静态网页放到服务器上面运行，比如说官网页面或者静态博客或者个人在线简历等等。
 
