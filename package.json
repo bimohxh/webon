@@ -1,6 +1,7 @@
 {
   "name": "webon",
-  "version": "1.1.1",
+  "version": "1.1.2",
+  "preferGlobal": true,
   "description": "A command tool to develop static sites",
   "bin": {
     "webon": "./bin/webon.js"
@@ -8,8 +9,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "", 
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bimohxh/webon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bimohxh/webon/issues"
+  },
+  "homepage": "https://github.com/bimohxh/webon#readme",
   "dependencies": {
     "colors": "^1.1.2",
     "commander": "^2.9.0",
