@@ -1,0 +1,12 @@
+node_modules
+start.sh
+npm-debug.log
+.sass-cache
+# VIM
+*~
+*.swp
+config/local_env.json
+tmp/
+!.keep
+app
+demo

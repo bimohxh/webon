@@ -4,7 +4,7 @@
 
 一个用于开发和部署静态网页的 node 命令行工具
 
-![](https://raw.githubusercontent.com/bimohxh/webon/master/logo.png)
+![](https://raw.githubusercontent.com/bimohxh/webon/master/demo/logo.png)
 
 ## 为什么会有 webon 
 很多时候我们都会有这种需求，做一些静态网页放到服务器上面运行，比如说官网页面或者静态博客或者个人在线简历等等。
@@ -20,7 +20,7 @@
 
 鉴于此， webon 提供了简单的部署方式，只需配置好相关参数，运行 `webon deploy` 即可将整个页面资源部署到 oss 上。
 
-而且 webon 可以支持多种 oss 源，不过目前仅实现了在七牛上的部署，原因是存储空间和流量的免费额度比较高，而且速度很快，接下来会对更多oss进行支持。
+而且 webon 可以支持多种 oss 源：阿里云（`aliyun`）和七牛云（`qiniu`）。推荐七牛，原因是存储空间和流量的免费额度比较高，而且速度很快，接下来会对更多oss进行支持。
 
 
 ## 开始
@@ -41,6 +41,9 @@ npm install webon -g
 ```
 webon init
 ```
+
+![](https://raw.githubusercontent.com/bimohxh/webon/master/demo/demo3.png)
+
 接下来会提示你各项参数的配置，配置完成后会在当前目录下生成一个名为 `webon.config.json` 文件，你可以通过 `webon config` 来查看当前的配置信息，当然也可以直接打开配置文件进行编辑。
 
 注意：由于配置文件有账户敏感信息，别忘了将 `webon.config.json` 加入 `.gitignore` 中去，
@@ -52,6 +55,8 @@ webon init
 ```
 webon s
 ```
+![](https://raw.githubusercontent.com/bimohxh/webon/master/demo/demo2.png)
+
 
 这里可以通过 `-p` 参数指定当前项目服务器运行的端口，这会覆盖第 2 步中的 `port` 项目全局配置项。
 
@@ -65,9 +70,14 @@ webon s
 webon deploy
 ```
 
+![](https://raw.githubusercontent.com/bimohxh/webon/master/demo/demo1.png)
+
+
 这里会有一个确认信息，告诉你具体会同步哪些文件，然后输入 `y` 确认同步，否则将取消。
 
 之所以这样做是因为，并非所有文件都需要同步到 oss 上，比如各种 log 文件和配置文件，那么这里我们在第 2 步的配置中会配置上要忽略的同步文件类型 `ignore`，里面提供了一些默认的，当然最终需要自定义成自己需要的。
+
+
 
 #### 缓存
 部署到七牛上的资源是有缓存的，比如替换掉 index.html 文件，再次访问时你会发现仍然是上次的内容，并没有改变。这是因为七牛给所有的资源都加入了缓存，所以需要更新改变后的文件缓存，这里如果用七牛官方提供的工具，其实操作都很不方便。
@@ -82,6 +92,9 @@ webon deploy
 ```
 webon new [项目目录名]
 ```
+
+![](https://raw.githubusercontent.com/bimohxh/webon/master/demo/demo4.png)
+
 这样就可以创建一个新的项目了，然后进入该项目执行上面的操作。生成的项目目录结构如下：
 
 ```
