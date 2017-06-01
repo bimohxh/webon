@@ -47,12 +47,12 @@ program
   .command('deploy')
   .description('部署当前文件到云存储')
   .option('-d, --dist', '选择目标云存储，目前支持 qiniu。将覆盖配置文件中的 oss 配置')
-  .action(() => {
+  .action((dir) => {
     if (!Helper.hasLocalEnv()) {
       Helper.msg('配置文件不存在，请运行 webon init', 'error')
       return
     }
-    Oss.deploy()
+    Oss.deploy(dir)
   })
 
 
