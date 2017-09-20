@@ -47,14 +47,15 @@ program
   .command('deploy [dir]')
   .description('部署当前文件到云存储')
   .option('-f, --force', '无需确认，直接同步')
+  .option('-r, --remove_prefix', '上传到云端要去除的路径前缀')
   .action((dir, options) => {
     if (!Helper.hasLocalEnv()) {
       Helper.msg('配置文件不存在，请运行 webon init', 'error')
       return
     }
-    Oss.deploy(dir, options.force)
+    let args = Helper.cmdArg(program.rawArgs)
+    let rp = args.r || args['-remove_prefix']
+    Oss.deploy(dir, options.force, rp)
   })
-
-
 
 program.parse(process.argv)
