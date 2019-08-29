@@ -79,6 +79,37 @@ webon deploy
 
 对应的我们提供了 `whitelist` 白名单配置项，如果存在该配置且不为空，则忽略 `ignore`
 
+#### 最佳实践
+
+假如我们有一个Vue的项目，最终需要 `npm run build` 生成静态文件到 `./dist` 目录下面，如果我们每次build完成之后都切换到dist目录下面是很蛮烦的，并且webon配置文件很可能被清除了。所以最佳实践是将 webon.config.json 放到项目根目录下，然后在 package.json 中加入下面的 script
+
+```json 
+"scripts" : {
+  "deploy": "webon deploy -r dist ./dist/"
+}
+```
+
+这里的 `-r` 表示移除上传后的文件路径，因为最终我们需要的是将 dist 目录下的文件上传到oss的根目录下，所以需要去除 dist 前缀。
+
+那么有同学问了，可不可以将webon.config.json加入版本控制，这样就不需要在新环境中再创建一遍了。答案是可以的，不过我们仍然需要将敏感信息去除，比如
+
+```json
+{
+  "port":"3000",
+  "oss":"aliyun",
+  "aliyun":{
+    "accessKeyId":"<AliyunAccessKeyId>",
+    "accessKeySecret":"<AliyunAccessKeySecret>",
+    "bucket":"debt-doc",
+    "region":"oss-cn-beijing"
+  },
+  "ignore":"*.log, *.log.json, *.config, *.config.json, .gitignore, README.md, .git*",
+  "whitelist":""
+}
+```
+
+上面的 `accessKeyId` 和 `accessKeySecret` 两个配置的值属于敏感信息，如果匹配 `<...>` 这种格式，则从当前的环境变量中取值。
+
 
 #### 缓存
 部署到七牛上的资源是有缓存的，比如替换掉 index.html 文件，再次访问时你会发现仍然是上次的内容，并没有改变。这是因为七牛给所有的资源都加入了缓存，所以需要更新改变后的文件缓存，这里如果用七牛官方提供的工具，其实操作都很不方便。
