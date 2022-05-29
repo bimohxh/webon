@@ -1,6 +1,6 @@
 {
   "name": "webon",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "preferGlobal": true,
   "description": "A command tool to develop static sites",
   "bin": {
