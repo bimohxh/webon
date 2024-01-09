@@ -47,15 +47,18 @@ program
   .command('deploy [dir]')
   .description('部署当前文件到云存储')
   .option('-f, --force', '无需确认，直接同步')
+  .option('-c, --config', '配置文件地址 默认为 webon.config.json')
   .option('-r, --remove_prefix', '上传到云端要去除的路径前缀')
   .action((dir, options) => {
-    if (!Helper.hasLocalEnv()) {
+    let args = Helper.cmdArg(program.rawArgs)
+    let cf = args.c || args['-config'] || 'webon.config.json'
+    const localEnv = Helper.readLocalEnv(cf);
+    if (!localEnv) {
       Helper.msg('配置文件不存在，请运行 webon init', 'error')
       return
     }
-    let args = Helper.cmdArg(program.rawArgs)
     let rp = args.r || args['-remove_prefix']
-    Oss.deploy(dir, options.force, rp)
+    Oss.deploy(localEnv, dir, options.force, rp)
   })
 
 program.parse(process.argv)

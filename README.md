@@ -104,7 +104,8 @@ webon deploy
     "region":"oss-cn-beijing"
   },
   "ignore":"*.log, *.log.json, *.config, *.config.json, .gitignore, README.md, .git*",
-  "whitelist":""
+  "whitelist":"",
+  "source": ""
 }
 ```
 
